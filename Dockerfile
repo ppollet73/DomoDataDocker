@@ -15,6 +15,7 @@ ENV DbHost=192.168.10.10\
 
 # environnement
 ENV EnvPlatform=PROD\
+	EnvUpdate=TRUE\
     EnvVirt=DOCKER \
     TERM=vt100
 
@@ -31,6 +32,7 @@ RUN apt-get update && apt-get install -y \
     &&  docker-php-ext-install pdo_mysql \
     &&  docker-php-ext-install mcrypt \
     &&  docker-php-ext-install xsl \
+    &&  docker-php-ext-install zip \
     &&  apt-get clean autoclean \
     &&  apt-get autoremove -y \
     &&  rm -rf /var/lib/{apt,dpkg,cache,log}/ \

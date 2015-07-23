@@ -29,6 +29,8 @@ RUN apt-get update && apt-get install -y \
       libxslt-dev\
       php5-mcrypt\
       wget\
+      zlibc\
+      zlib1g-dev\
     &&  docker-php-ext-install pdo_mysql \
     &&  docker-php-ext-install mcrypt \
     &&  docker-php-ext-install xsl \

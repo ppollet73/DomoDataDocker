@@ -46,7 +46,9 @@ RUN a2enmod rewrite\
 
 
 #ADD sources /var/www/html/.
-ADD apache2-foreground /usr/local/bin/.
+COPY ./apache2-foreground /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/apache2-foreground
 
 # Get sources from GitHub
 RUN mkdir /DomodataGit \

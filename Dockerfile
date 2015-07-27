@@ -51,7 +51,8 @@ RUN mkdir /DomodataGit \
     && cd /DomodataGit \
     && git clone "https://github.com/ppollet73/domotique_data.git" \
     && cd /DomodataGit/domotique_data/DomoData \
-    && cp -R -f . /var/www/html/.
+    && cp -R -f . /var/www/html/. \
+    && chown -R www-data:www-data /var/www/html/xml
 
 ## configure PHP env
 WORKDIR /var/www/html

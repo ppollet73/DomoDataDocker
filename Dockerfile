@@ -57,6 +57,7 @@ RUN mkdir /DomodataGit \
 
 ## configure PHP env
 WORKDIR /var/www/html
+RUN wget http://getcomposer.org/composer.phar
 RUN php composer.phar self-update
 RUN php composer.phar install
 

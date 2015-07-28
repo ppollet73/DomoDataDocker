@@ -44,12 +44,7 @@ RUN apt-get update && apt-get install -y \
 RUN a2enmod rewrite\
      && php5enmod mcrypt
 
-
 #ADD sources /var/www/html/.
-COPY ./apache2-foreground /usr/local/bin/
-
-RUN chmod +x /usr/local/bin/apache2-foreground
-
 # Get sources from GitHub
 RUN mkdir /DomodataGit \
     && cd /DomodataGit \
@@ -68,5 +63,9 @@ RUN php composer.phar install
 #Configure Log
 RUN mkdir /var/log/Domodata
 RUN chown www-data:www-data /var/log/Domodata
+
+#Replace apache startup script to update Domodata
+COPY ./apache2-foreground /usr/local/bin/
+RUN chmod +x /usr/local/bin/apache2-foreground
 
 EXPOSE 80

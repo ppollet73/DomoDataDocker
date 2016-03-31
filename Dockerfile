@@ -17,6 +17,7 @@ ENV DbHost=192.168.10.10\
 ENV EnvPlatform=PROD\
 	EnvUpdate=TRUE\
     EnvVirt=DOCKER \
+    DelayBetweenApiCalls=2\
     TERM=vt100
 
 # install needed packages and cleanup in the same layer

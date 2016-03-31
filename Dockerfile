@@ -13,7 +13,6 @@ ENV DbHost=192.168.10.10\
     DbLogin=domodata\
     DbPassword=domodata
     
-
 # environnement
 ENV EnvPlatform=PROD\
 	EnvUpdate=TRUE\

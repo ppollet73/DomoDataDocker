@@ -1,25 +1,6 @@
 FROM php:5.6-apache
 MAINTAINER Madoma73
 
-# confs eeodmus
-ENV eedomus_apiuser=api\ user\
-    eedomus_apisecret=very\ secret\ 
-    eedomus_adressip=192.168.1.1
-
-# conf DB
-ENV DbHost=192.168.10.10\
-    DbPort=3306\
-    DbSchema=domodata\
-    DbLogin=domodata\
-    DbPassword=domodata
-    
-# environnement
-ENV EnvPlatform=PROD\
-	EnvUpdate=TRUE\
-    EnvVirt=DOCKER \
-    DelayBetweenApiCalls=2\
-    TERM=vt100
-
 # install needed packages and cleanup in the same layer
 RUN apt-get update && apt-get install -y \
       apt-utils \
@@ -44,6 +25,25 @@ RUN apt-get update && apt-get install -y \
 # apache/php configuration
 RUN a2enmod rewrite\
      && php5enmod mcrypt
+
+# confs eedomus
+ENV eedomus_apiuser=api\ user\
+    eedomus_apisecret=very\ secret\ 
+    eedomus_adressip=192.168.1.1
+
+# conf DB
+ENV DbHost=192.168.10.111\
+    DbPort=3306\
+    DbSchema=domodata\
+    DbLogin=domodata\
+    DbPassword=domodata
+    
+# environnement
+ENV EnvPlatform=PROD\
+    EnvUpdate=TRUE\
+    EnvVirt=DOCKER \
+    DelayBetweenApiCalls=2\
+    TERM=vt100
 
 #ADD sources /var/www/html/.
 # Get sources from GitHub

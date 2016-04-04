@@ -42,7 +42,7 @@ ENV DbHost=192.168.10.111\
 ENV EnvPlatform=PROD\
     EnvUpdate=TRUE\
     EnvVirt=DOCKER \
-    DelayBetweenApiCalls=2\
+    DelayBetweenApiCalls=1\
     TERM=vt100
 
 #ADD sources /var/www/html/.
@@ -67,6 +67,9 @@ RUN chown www-data:www-data /var/log/Domodata
 
 #Replace apache startup script to update Domodata
 COPY ./apache2-foreground /usr/local/bin/
+COPY ./servername.conf /etc/apache2/conf-available/.
+RUN a2enconf servername
+
 RUN chmod +x /usr/local/bin/apache2-foreground
 
 EXPOSE 80

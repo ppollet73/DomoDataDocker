@@ -1,4 +1,9 @@
+# in case of use with ARM processor 
+# un comment this line and comment line 4 
+# FROM madoma73/arm-php5.6
 FROM php:5.6-apache
+
+
 MAINTAINER Madoma73
 
 # install needed packages and cleanup in the same layer

@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+#Update Domodata sources
+if [[ -n "$EnvUpdate" ]]; then
+  if [ "$EnvUpdate" == "TRUE" ]; then
+    rm -rf /var/www/html/vendor/zircote
+    cd /DomodataGit/domotique_data/
+    echo "**** update website from github"
+    git pull "https://github.com/ppollet73/domotique_data.git" 
+    cd /DomodataGit/domotique_data/DomoData 
+    cp -R -f . /var/www/html/. 
+    cd /var/www/html/.
+    rm composer.lock
+    echo "**** Composer self-update"
+    php composer.phar self-update
+    echo "**** Composer package install"
+    php composer.phar install
+  fi
+fi
+
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /var/run/apache2/apache2.pid
+
+exec apache2 -DFOREGROUND
